@@ -1,0 +1,97 @@
+{% include 'inc/header.html' %}
+
+<div class="container-fluid">
+        <div class="row-fluid">
+
+            <!-- left menu  -->
+            {% include 'inc/left-menu.html' %}
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <div id="content" class="span10">
+
+            <div class="row-fluid">
+                <div class="box span12">
+                    <div class="box-header well">
+                        <h2><i class="icon-info-sign"></i>
+                        {% if this.id %}
+                          Alterar Evento
+                        {% else %}
+                          Cadastro de Evento
+                        {% endif %}
+                        </h2>
+                    </div>
+                    <div class="box-content">
+
+                       {{ flash_messages('Erros no processamento do formulário') }}
+
+                       {% if this.id %}
+                          {%  set action = '/admin/evento/edit' %}
+                       {% else %}
+                          {%  set action = '/admin/evento/novo' %}
+                       {% endif %}
+
+                        <form method="POST" action="{{ action }}" class="form-horizontal">
+
+                            <fieldset>
+
+                              <input type="hidden" name="id" value="{{ this.id }}" />
+
+                              {{ form_input("Nome", 'nome', 'text', this.nome)  }}
+
+                              <!--{{ form_input("Qtd Inscrições", 'qtdInscricoes', 'text', this.qtdInscricoes, {'class' : 'input-small'},'Informe em até quantos eventos deste tipo um participante pode se inscrever' )  }} -->
+
+                              {{ form_combo("Status", "status",
+                              { 'AT' : 'Ativo', 'IN' : 'Inativo' }, this.status) }}
+                              <div class="control-group">
+                                <label class="control-label" for="descricao">Descrição: </label>
+                                <div class="controls">
+                                  <textarea name='descricao' style="width: 400px;height:150px;" id='descricao'>{{ this.descricao }}</textarea>
+                                </div>
+                              </div>
+                              {% if get_meta("submissoes_ativas") == 1 %}
+                                <div class="control-group">
+                                      <label class="control-label" >Ativar Submissões para este evento: </label>
+                                      <div class="controls">
+                                          <label class="radio">
+                                              <input type="radio" id="radio_submissoes1" value="1" name="submissoes"
+                                              {% if this.submissoes == 1 %} checked {% endif %} /> Sim
+                                          </label>
+                                          <label>
+                                              <input type="radio" id="radio_submissoes2" value="0" name="submissoes"
+                                              {% if this.submissoes == 0 %} checked {% endif %}/> Não
+                                          </label>
+
+                                      </div>
+                                </div>
+                                {{ form_input("Deadline Submissão (blind review): ", 'deadline_inicial', 'text', this.deadline_inicial|date("d/m/Y"), { 'class' : 'datepicker' } )  }}
+                                {{ form_input("Deadline Submissão (versão final): ", 'deadline_final', 'text', this.deadline_final|date("d/m/Y"), { 'class' : 'datepicker' } )  }}
+                              {% endif %}
+                              <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                              </div>
+
+                            </fieldset>
+
+                          </form>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- content ends -->
+            </div><!--/#content.span10-->
+                </div><!--/fluid-row-->
+
+        <hr>
+
+        {% include 'inc/modal.html' %}
+
+
+{% include 'inc/footer.html' %}

@@ -1,0 +1,73 @@
+{% include 'inc/header.html' %}
+<div class="container-fluid">
+        <div class="row-fluid">
+
+            <!-- left menu  -->
+            {% include 'inc/left-menu.html' %}
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <div id="content" class="span10">
+
+            <div class="row-fluid">
+                <div class="box span12">
+                    <div class="box-header well">
+                        <h2><i class="icon-info-sign"></i>
+                            Visualizar eventos
+                        </h2>
+                    </div>
+                    <div class="box-content">
+
+                       {{ flash_messages('') }}
+                       <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                          <thead>
+                              <tr>
+                                  <th>Tipo</th>
+                                  <th>Título</th>
+                                  <th>Descrição</th>
+                                  <th>Vagas restantes</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            {% for eventName in this.events|keys %}
+                                {% for subEvent in this.events[eventName] %}
+                                     <tr>
+                                         <td> {{ eventName }} </td>
+                                         <td>{{ subEvent.SubEventoNome }}</td>
+                                         <td><pre>{{ subEvent.descricao|raw }}</pre></td>
+                                         <td>
+                                            {% if subEvent.nVagas < 0 %}
+                                                Ilimitado(a)
+                                            {% else %}
+                                                {{ subEvent.nVagas }}
+                                            {% endif %}
+                                        </td>
+                                     </tr>
+                                {% endfor %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- content ends -->
+            </div><!--/#content.span10-->
+                </div><!--/fluid-row-->
+
+        <hr>
+
+        {% include 'inc/modal.html' %}
+
+
+{% include 'inc/footer.html' %}
+
+

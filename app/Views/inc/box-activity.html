@@ -1,0 +1,29 @@
+<div class="box span6">
+    <div class="box-header well" data-original-title>
+        <h2><i class="icon-user"></i> Últimos inscritos </h2>
+        <div class="box-icon">
+            <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+        <div class="box-content">
+            <ul class="dashboard-list">
+                {% for p in this.participants %}
+                    <li>
+                        <a href="#">
+                            <img class="dashboard-avatar" alt="{{p.nomeCompleto}}" src="http://www.gravatar.com/avatar/{{ email_hash(p.email)}} .png?s=50"></a>
+                            <strong>Nome:</strong> <a href="/congressista/inscricao/viewuserevents/idusuario/{{ p.id }}">{{p.nomeCompleto}}
+                        </a><br>
+                        <strong>Desde:</strong> {{p.created}}<br>
+                        <strong>Status:</strong>
+                        {% if p.status == 'AP' %}
+                            <span class="label label-error">Aguardando Pagamento</span>
+                        {% else %}
+                            <span class="label label-success">Pagamento Aprovado</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div><!--/span-->

@@ -1,0 +1,102 @@
+{% include 'inc/header.html' %}
+
+<div class="container-fluid">
+        <div class="row-fluid">
+
+            <!-- left menu  -->
+            {% include 'inc/left-menu.html' %}
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <div id="content" class="span10">
+
+            <div class="row-fluid">
+                <div class="box span12">
+                    <div class="box-header well">
+                        <h2><i class="icon-info-sign"></i>
+                        Configurações Gerais
+                        </h2>
+                    </div>
+                    <div class="box-content">
+
+                       {{ flash_messages('Erros no processamento do formulário') }}
+
+          
+
+                        <form method="POST" action="/admin/configs/save" class="form-horizontal" enctype="multipart/form-data">
+
+                            <fieldset>
+                                 {{ form_input("Nome do Evento", 'meta_data[nome_evento]', 'text', get_meta('nome_evento') )  }}
+                                 {{ form_input("Descrição do Evento", 'meta_data[descricao_evento]', 'text', get_meta('descricao_evento') )  }}
+
+                                 {{ form_input("Logo do Evento", 'logo_evento', 'file') }}
+
+                                 {% if get_meta('logo_evento') %}
+                                    <div class="control-group">
+                                      <label class="control-label" for="payment-receipt-file"> Logo atual: </label>
+                                        <div class="controls">
+                                          <img width="200px" src="/uploads/{{ get_meta('logo_evento') }}" />
+                                          <span class="help-inline">
+                                            </span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {{ form_input("E-Mail Principal", 'meta_data[email_principal]', 'text', get_meta('email_principal') )  }}
+
+                                <div class="control-group">
+                                    <label class="control-label" for="meta_data[descricao_pagamento]">Informações de como realizar o pagamento: </label>
+                                    <div class="controls">
+                                      <textarea class="cleditor" name='meta_data[descricao_pagamento]' style="width: 400px;height:150px;" id='meta_data[descricao_pagamento]'>{{ get_meta('descricao_pagamento') }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="meta_data[descricao_inscricao]">Informações a serem exibidas na tela de inscrição: </label>
+                                    <div class="controls">
+                                      <textarea class="cleditor" name='meta_data[descricao_inscricao]' style="width: 400px;height:150px;" id='meta_data[descricao_inscricao]'>{{ get_meta('descricao_inscricao') }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" >Ativar Submissões: </label>
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" id="radio_submissoes1" value="1" name="meta_data[submissoes_ativas]"
+                                            {% if get_meta('submissoes_ativas') == 1 %} checked {% endif %} /> Sim
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="radio_submissoes2" value="0" name="meta_data[submissoes_ativas]"
+                                            {% if get_meta('submissoes_ativas') == 0 %} checked {% endif %}/> Não
+                                        </label>
+
+                                    </div>
+                                </div>
+                                <!--{{ form_input("Deadline Submissão: ", 'meta_data[deadline_submissao]', 'text', get_meta('deadline_submissao'), { 'class' : 'datepicker' } )  }}-->
+
+                                {{ form_input("Valor Inscrição com submissão", 'meta_data[valor_inscricao_com_submissao]', 'text', get_meta('valor_inscricao_com_submissao'), { 'class' : 'input-mini' } )  }}
+                                {{ form_input("Valor Inscrição sem submissão", 'meta_data[valor_inscricao_sem_submissao]', 'text', get_meta('valor_inscricao_sem_submissao'), { 'class' : 'input-mini' } )  }}
+                            </fieldset>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                              </div>
+                          </form>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- content ends -->
+            </div><!--/#content.span10-->
+                </div><!--/fluid-row-->
+
+        <hr>
+
+        {% include 'inc/modal.html' %}
+
+
+{% include 'inc/footer.html' %}

@@ -1,0 +1,64 @@
+{% include 'inc/header.html' %}
+<div class="container-fluid">
+        <div class="row-fluid">
+
+            <!-- left menu  -->
+            {% include 'inc/left-menu.html' %}
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <div id="content" class="span10">
+
+            <div class="row-fluid">
+                <div class="box span12">
+                    <div class="box-header well">
+                        <h2><i class="icon-info-sign"></i>
+                          Alterar senha de {{ this.nomeCompleto }}
+                        </h2>
+                    </div>
+                    <div class="box-content">
+
+                       {{ flash_messages('') }}
+
+                        <form method="POST" action="/user/change_pass" class="form-horizontal">
+
+                            <fieldset>
+
+                              <input type="hidden" name="id" value="{{ this.id }}" />
+
+                                {{ form_input("Senha Antiga", "old_pass", "password") }}
+
+                                {{ form_input("Nova Senha", "new_pass", "password") }}
+
+                                {{ form_input("Senha Antiga", "confirm_pass", "password") }}
+
+
+                              <div class="form-actions">
+                                  <button type="submit" class="btn btn-primary">Salvar</button>
+                              </div>
+
+                            </fieldset>
+
+                          </form>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- content ends -->
+            </div><!--/#content.span10-->
+                </div><!--/fluid-row-->
+
+        <hr>
+
+        {% include 'inc/modal.html' %}
+
+
+{% include 'inc/footer.html' %}
+
+

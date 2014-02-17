@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'inc/head.html' %}
+</head>
+
+<body>
+    <!-- topbar starts -->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/"> <img alt="{{ get_meta('nome_evento') }}" src="/uploads/{{ get_meta('logo_evento') }}" /> <span>{{ get_meta('nome_evento') }}</span></a>
+
+            <!-- user dropdown starts -->
+            <div class="btn-group pull-right" >
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-user"></i><span class="hidden-phone">{{user.nomeCompleto}} - {{ user.email }}</span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    {% if user.tipo == 'AD' %}
+                        {% set router = '/admin' %}
+                    {% else %}
+                        {% set router = '' %}
+                    {% endif %}
+                    <li><a href="{{router}}/user/edit/id/{{ user._id }}">Minha conta</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/auth/logout">Logout</a></li>
+                </ul>
+            </div>
+            <!-- user dropdown ends -->
+
+        </div>
+    </div>
+</div>
+<!-- topbar ends -->
+

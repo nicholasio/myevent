@@ -1,0 +1,15 @@
+/*
+    Sheept Form Controls
+*/
+#sheepItForm_controls > div {
+    float:left;
+    margin: 0 5px 5px 0;
+}
+
+#sheepItForm_add_n input, #sheepItForm_add_n div {
+    display: inline;
+}
+.input-append .icon-remove {
+    float:right;
+    margin: 8px 0 0 5px;
+}

@@ -1,0 +1,46 @@
+<div class="span2 main-menu-span">
+    <div class="well nav-collapse sidebar-nav">
+        <ul class="nav nav-tabs nav-stacked main-menu">
+            <li class="nav-header hidden-tablet">Main</li>
+            {% if user.tipo == 'AD' %}
+                <li>
+                    <a class="ajax-link" href="/admin"><i class="icon-home"></i>
+                        <span class="hidden-tablet"> Home</span>
+                    </a>
+                </li>
+                <li class="nav-header hidden-tablet">Usuários</li>
+                 <li>
+                    <a class="ajax-link" href="/admin/user/novo"><i class="icon-edit"></i>
+                        <span class="hidden-tablet"> Cadastrar Usuário </span>
+                    </a>
+                </li>
+                 <li>
+                    <a class="ajax-link" href="/admin/user/"><i class="icon-edit"></i>
+                        <span class="hidden-tablet"> Listar Usuários </span>
+                    </a>
+                </li>
+                <li class="nav-header hidden-tablet">Eventos</li>
+                 <li>
+                    <a class="ajax-link" href="/admin/evento/novo"><i class="icon-edit"></i>
+                        <span class="hidden-tablet"> Cadastrar Evento </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="ajax-link" href="/admin/evento"><i class="icon-edit"></i>
+                        <span class="hidden-tablet"> Listar Eventos </span>
+                    </a>
+                </li>
+                <li class="nav-header hidden-tablet">Configurações</li>
+                <li>
+                    <a class="ajax-link" href="/admin/configs"><i class="icon-edit"></i>
+                        <span class="hidden-tablet"> Gerais </span>
+                    </a>
+                </li>
+
+            {% else %}
+                 {% include 'inc/left-menu-user.html' %}
+            {% endif %}
+        </ul>
+    </div><!--/.well -->
+</div><!--/span-->
+<!-- left menu ends -->

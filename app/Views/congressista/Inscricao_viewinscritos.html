@@ -1,0 +1,76 @@
+{% include 'inc/header.html' %}
+<div class="container-fluid">
+        <div class="row-fluid">
+
+            <!-- left menu  -->
+            {% include 'inc/left-menu.html' %}
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <div id="content" class="span10">
+
+            <div class="row-fluid">
+                <div class="box span12">
+                    <div class="box-header well">
+                        <h2><i class="icon-info-sign"></i>
+                            Visualizar inscritos no {{ this.inscritos[0].EventoNome }}
+                            {{ this.inscritos[0].SubEventoNome }}
+                        </h2>
+                    </div>
+                    <div class="box-content">
+
+                       {{ flash_messages('') }}
+                       <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                          <thead>
+                              <tr>
+                                  <th>Nome</th>
+                                  <th>E-mail</th>
+                                  <th>CPF</th>
+                                  <th>Ações</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            {% for inscrito in this.inscritos %}
+                                 <tr>
+                                     <td> {{ inscrito.nomeCompleto }} </td>
+                                     <td>{{ inscrito.email }}</td>
+                                     <td>{{ inscrito.cpf }}</td>
+                                     <td width="300" class="center">
+                                        <a class="btn btn-info" href="/admin/user/edit/id/{{ inscrito.idUsuarios }}">
+                                            <i class="icon-edit icon-white"></i>
+                                            Editar Usuário
+                                        </a>
+                                        <a class="btn btn-danger" href="/congressista/inscricao/del/id/{{ inscrito.idInscricoes }}/idsubevento/{{ this.idsubevento }}">
+                                            <i class="icon-trash icon-white"></i>
+                                            Remover Inscrição
+                                        </a>
+                                     </td>
+                                 </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- content ends -->
+            </div><!--/#content.span10-->
+                </div><!--/fluid-row-->
+
+        <hr>
+
+        {% include 'inc/modal.html' %}
+
+
+{% include 'inc/footer.html' %}
+
+
+

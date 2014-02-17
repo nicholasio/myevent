@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'inc/head.html' %}
+</head>
+
+<body>
+        <div class="container-fluid">
+        <div class="row-fluid">
+
+            <div class="row-fluid">
+                <div class="span12 center login-header" style="height:80px">
+                    <h2>Seja bem vindo ao {{ get_meta("nome_evento") }}</h2>
+                </div><!--/span-->
+                <div class="span12 center">
+                    <img src="/uploads/{{ get_meta('logo_evento') }}" height="200px />
+                </div>
+            </div><!--/row-->
+
+            <div class="row-fluid">
+                <div class="well span5 center login-box">
+                    <div class="alert alert-info">
+                        Insira seus dados para fazer login <br />
+                        <strong>{{ this.errLogin }}</strong>
+                    </div>
+                    {{ flash_messages('Erro') }}
+                    <form class="form-horizontal" action="/auth/login" method="post">
+                        <fieldset>
+                            <div class="input-prepend" title="Email" data-rel="tooltip">
+                                <span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="email" id="email" type="text" value="Insira seu email" />
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="input-prepend" title="Senha" data-rel="tooltip">
+                                <span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="senha" id="senha" type="password" value="senha" />
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="input-prepend">
+                                <a href="/auth/passrecovery">Esqueci minha senha</a>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="center span6">
+                                <div class="span6">
+                                     <button  type="submit" class="btn btn-primary">Login</button>
+                                </div>
+                                <div class="span4">
+                                    <a class="btn btn-info" href="/auth/newaccount">
+                                        Criar Conta
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </fieldset>
+                    </form>
+                </div><!--/span-->
+            </div><!--/row-->
+                </div><!--/fluid-row-->
+
+    </div><!--/.fluid-container-->
+    {% include 'inc/scripts.html' %}
+
+</body>
+</html>

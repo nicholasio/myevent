@@ -1,0 +1,101 @@
+{% include 'inc/header.html' %}
+
+<div class="container-fluid">
+        <div class="row-fluid">
+
+            <!-- left menu  -->
+            {% include 'inc/left-menu.html' %}
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <div id="content" class="span10">
+
+            <div class="row-fluid">
+                <div class="box span12">
+                    <div class="box-header well">
+                        <h2><i class="icon-info-sign"></i>
+                        {% if this.author_id %}
+                          Editar Submissão
+                        {% else %}
+                          Submeter Trabalho
+                        {% endif %}
+                        </h2>
+                    </div>
+                    <div class="box-content">
+
+                       {{ flash_messages('Erros no processamento do formulário') }}
+
+                       {% if this.author_id %}
+                          {%  set action = '/congressista/submissao/edit' %}
+                       {% else %}
+                          {%  set action = '/congressista/submissao/save' %}
+                       {% endif %}
+
+                        <form method="POST" action="{{ action }}" class="form-horizontal" enctype="multipart/form-data">
+
+                            <fieldset>
+
+                              <input type="hidden" name="author_id" value="{{ user._id }}" />
+
+                              {% if this.eventos | length > 0 %}
+                                 <div class="control-group">
+                                  <label class="control-label" >Evento: </label>
+                                    <div class="controls">
+                                      <select name="idEventos">
+                                        {% for evento in this.eventos %}
+                                          <option value="{{ evento.id }}"
+                                          {% if this.idEventos == evento.id %}
+                                            selected
+                                          {% endif %}
+                                          >{{ evento.nome }}</option>
+                                        {% endfor %}
+                                      </select>
+                                    </div>
+                                  </div>
+                                  {{ form_input("Título do Trabalho", 'titulo_trabalho', 'text')  }}
+                                   <div class="control-group">
+                                   <label class="control-label" >Autores: </label>
+                                    <div class="controls">
+                                      <select style="300px" name="autores[]" class="multi-select" multiple="">
+                                        {% for _user in this.users %}
+                                          {% if _user.id != user._id %}
+                                            <option value="{{ _user.id }}">{{ _user.nomeCompleto }}</option>
+                                          {% endif %}
+                                        {% endfor %}
+                                      </select> 
+                                      <span class="help-inline">Selecione os autores além de você.</span>
+                                    </div>
+                                  </div>
+                                  {{ form_input("Trabalho (blind review)", 'arquivo_inicial', 'file'," Somente arquivos .pdf")  }}
+
+                                  <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Submeter</button>
+
+                                  </div>
+                            {% else %}
+                              <p>Não existem submissões disponívels para você neste momento.</p>
+                            {% endif %}
+
+                            </fieldset>
+
+                          </form>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- content ends -->
+            </div><!--/#content.span10-->
+                </div><!--/fluid-row-->
+
+        <hr>
+
+        {% include 'inc/modal.html' %}
+
+
+{% include 'inc/footer.html' %}

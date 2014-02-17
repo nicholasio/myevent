@@ -1,0 +1,750 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"MOXO",
+				"MOXO_VENDORS_DIR"
+			],
+			[
+				"getInscr",
+				"getInscrioesRealizadas"
+			],
+			[
+				"in",
+				"inscricoesPermitidas"
+			],
+			[
+				"getReq",
+				"getRequester"
+			],
+			[
+				"getRequester",
+				"getRequesterId"
+			],
+			[
+				"insc",
+				"inscricoesRealizadas"
+			],
+			[
+				"inscrioes",
+				"inscricoesRealizadas"
+			],
+			[
+				"inscri",
+				"inscricoesPermitidas"
+			],
+			[
+				"ins",
+				"inscricoesRealizadas"
+			],
+			[
+				"inscr",
+				"inscricoesPermitidas"
+			],
+			[
+				"add",
+				"addslashes"
+			],
+			[
+				"idsub",
+				"idsubevento"
+			],
+			[
+				"idE",
+				"idEventos"
+			],
+			[
+				"Sub",
+				"SubEventos"
+			],
+			[
+				"idSub",
+				"idSubEventos"
+			],
+			[
+				"SubEvento",
+				"SubEventoNome"
+			],
+			[
+				"subEv",
+				"subEvents"
+			],
+			[
+				"html_",
+				"htmlspecialchars_decode"
+			],
+			[
+				"html",
+				"html_entity_decode"
+			],
+			[
+				"auth",
+				"authUser"
+			],
+			[
+				"help",
+				"helpText"
+			],
+			[
+				"arr",
+				"arrParsed"
+			],
+			[
+				"prop",
+				"propertiesToDel"
+			],
+			[
+				"autor",
+				"autorLivro"
+			],
+			[
+				"autores",
+				"autoresLivros"
+			],
+			[
+				"aut",
+				"autoresLivros"
+			],
+			[
+				"id",
+				"idLivros"
+			],
+			[
+				"idAuto",
+				"idAutores"
+			],
+			[
+				"getLivro",
+				"getLivrosForAutocomplete"
+			],
+			[
+				"SU",
+				"sucessMessage"
+			],
+			[
+				"suc",
+				"sucessMessage"
+			],
+			[
+				"ah",
+				"authUser"
+			],
+			[
+				"getP",
+				"getParam"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"all",
+				"allKeys"
+			],
+			[
+				"op",
+				"oldPass"
+			],
+			[
+				"confirm",
+				"confirmPass"
+			],
+			[
+				"new",
+				"newPass"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"getUser",
+				"getUserData"
+			],
+			[
+				"dis",
+				"display"
+			],
+			[
+				"Fla",
+				"flashMessage"
+			],
+			[
+				"controller",
+				"controllerName"
+			],
+			[
+				"cont",
+				"controllerName"
+			],
+			[
+				"controll",
+				"controllerClass"
+			],
+			[
+				"para",
+				"params"
+			],
+			[
+				"getCurrent",
+				"getCurrentModule"
+			],
+			[
+				"Twi",
+				"Twig_SimpleFunction"
+			],
+			[
+				"form",
+				"formInput"
+			],
+			[
+				"de",
+				"default_value"
+			],
+			[
+				"ob_get",
+				"ob_get_contents"
+			],
+			[
+				"view",
+				"viewName"
+			],
+			[
+				"array_ke",
+				"array_key_exists"
+			],
+			[
+				"str_rep",
+				"str_replace"
+			],
+			[
+				"pat",
+				"path"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"path",
+				"PathToclassName"
+			],
+			[
+				"strto",
+				"strtolower"
+			],
+			[
+				"re",
+				"result"
+			],
+			[
+				"clas",
+				"className"
+			],
+			[
+				"user",
+				"userColumn"
+			],
+			[
+				"setUser",
+				"setUserColumn"
+			],
+			[
+				"pass",
+				"passColumn"
+			],
+			[
+				"upload",
+				"uploadify-3"
+			],
+			[
+				"autogr",
+				"autogrow-textarea"
+			],
+			[
+				"file",
+				"filePath"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/lib/MoxoPhp/Twig_Config.php",
+			"settings":
+			{
+				"buffer_size": 3303,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public_html/index.php",
+			"settings":
+			{
+				"buffer_size": 3239,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Views/admin/Usuario_list.html",
+			"settings":
+			{
+				"buffer_size": 5030,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Controllers/Admin/Usuario.php",
+			"settings":
+			{
+				"buffer_size": 1651,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 96.0,
+		"selected_items":
+		[
+			[
+				"set tw",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"",
+				"File: Revert"
+			],
+			[
+				"set twi",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"set twig",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"set stwi",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"set sp",
+				"Set Syntax: PHP"
+			],
+			[
+				"set",
+				"Set Syntax: camlp4"
+			],
+			[
+				" set twi",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pac rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"FTP",
+				"FTPSync: Upload current file"
+			],
+			[
+				"ft",
+				"FTPSync: Browse"
+			],
+			[
+				"FT",
+				"FTPSync: Download current file"
+			],
+			[
+				"fto",
+				"FTPSync: Browse from current folder"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/admin/Usuario_edit.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Congressista/FrontController.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Models/Evento.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/admin/Evento_edit.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/admin/Evento_list.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Congressista/Inscricao.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Controllers/CRUD.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Congressista/Index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/inc/welcome.html",
+		"/home/nicholas/Downloads/arvoreAVL.cpp",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/congressista/Inscricao.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/Auth_newaccount.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Usuario.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/public_html/index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Models/BaseModel.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Models/Model.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Helpers/AuthHelper.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Auth.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Admin/Evento.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/congressista/Inscricao_viewuserevents.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/congressista/Inscricao_viewinscritos.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/admin/Usuario_list.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/inc/box-activity.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Admin/Index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/admin/Usuario_pass.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Banco.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/inc/header.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/inc/footer.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Admin/SubEvento.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Models/Inscricao.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Admin/Usuario.php",
+		"/home/nicholas/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/inc/left-menu-user.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/congressista/Inscricao_viewevents.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/admin/SubEvento_edit.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Models/Usuario.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/config/router.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/inc/left-menu.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Models/SubEvento.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Util/validate.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Controllers/BaseController.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Twig_Config.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/admin/SubEvento_list.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/inc/scripts.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/config/bootstrap.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/public_html/resources/js/jquery.masked.input.js",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/User/FrontController.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/User/Index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/AppController.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/Admin/AdminController.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Controllers/Controller.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/congressista/Index.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/lib/MoxoPhp/Router.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/user/Index.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Controllers/User/Usuario.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/config/db.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/app/Views/admin/Index.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/Admin/Autor.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Livro_edit.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/config/cdd.csv",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/config/classificacaoLocal.csv",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/public_html/index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Util/io.php",
+		"/home/nicholas/Dropbox/PC UFERSA/www/EnvioDeCertificados/enviar_certificados.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/config/bootstrap.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Helpers/DataStore.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Helpers/SessionHelper.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/Admin/Livro.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Twig_Config.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Controllers/Controller.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Views/View.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Models/Livro.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/scripts.html",
+		"/home/nicholas/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/tmp/arvbin_preliminar.cpp",
+		"/tmp/ConjDisjuntos.cpp",
+		"/tmp/HeapBinariaEx.cpp",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Controllers/CRUD.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/tempExport/form.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Models/Model.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Banco.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Models/AutoresLivros.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/Admin/AutoresLivros.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/left-menu.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/header.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Livro_list.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/Admin/AdminController.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/Admin/Usuario.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/Admin/Editora.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/config/router.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Autor_edit.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Usuario_list.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Editora_list.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Autor_list.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/Admin/Index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Models/Editora.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Editora_edit.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Helpers/AuthHelper.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Models/Usuario.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Usuario_edit.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Usuario_pass.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/Index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/Auth.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Helpers/FlashMessages.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Router.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Controllers/BaseController.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Helpers/RedirectorHelper.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Helpers/FlasshMessages.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/head.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/Auth_login.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/User_edit.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/modal.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Index.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/box-stats.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/box-activity.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/welcome.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/breadcumbs.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/inc/footer.html",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/Views/BaseView.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Views/admin/Index.tpl.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/Controllers/admin/Index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/controllers/admin/Index.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/controllers/Auth.php",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/config/db.php",
+		"/home/nicholas/.config/sublime-text-2/Packages/Alignment/Base File.sublime-settings",
+		"/home/nicholas/.config/sublime-text-2/Packages/User/Base File.sublime-settings",
+		"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/BibliotecaSetorial/app/lib/MoxoPhp/helpers/AuthHelper.php"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"getAll",
+			"getAllEvents",
+			"novo",
+			"Livro",
+			"livro",
+			"autor",
+			"ed",
+			"$ed",
+			"this",
+			"auto_complete"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/lib/MoxoPhp/Twig_Config.php",
+					"settings":
+					{
+						"buffer_size": 3303,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								61,
+								61
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public_html/index.php",
+					"settings":
+					{
+						"buffer_size": 3239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1863,
+								1863
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 399.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Views/admin/Usuario_list.html",
+					"settings":
+					{
+						"buffer_size": 5030,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								955,
+								955
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/Controllers/Admin/Usuario.php",
+					"settings":
+					{
+						"buffer_size": 1651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1246,
+								1246
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 570.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/run/user/nicholas/gvfs/sftp:host=172.17.41.45/var/www/petroweek/petroweek.sublime-project"
+			],
+			[
+				"bi",
+				"/home/nicholas/biblioengprod.sublime-project"
+			],
+			[
+				"s",
+				"/home/nicholas/SEQ.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 216.0,
+	"status_bar_visible": true
+}

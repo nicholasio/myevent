@@ -1,0 +1,40 @@
+<li>
+    <a class="ajax-link" href="/congressista"><i class="icon-home"></i>
+        <span class="hidden-tablet"> Home</span>
+    </a>
+</li>
+<li class="nav-header hidden-tablet">Minha Conta</li>
+ <li>
+    <a class="ajax-link" href="/user/edit/id/{{ user._id }}"><i class="icon-edit"></i>
+        <span class="hidden-tablet"> Editar meus dados </span>
+    </a>
+</li>
+<li>
+    <a class="ajax-link" href="/user/pass/id/{{ user._id }}"><i class="icon-edit"></i>
+        <span class="hidden-tablet"> Alterar senha </span>
+    </a>
+</li>
+<li class="nav-header hidden-tablet">Inscrição</li>
+<li>
+    <a class="ajax-link" href="/congressista/inscricao/index/userId/{{ user._id }}"><i class="icon-edit"></i>
+        <span class="hidden-tablet"> Realizar Inscrição </span>
+    </a>
+</li>
+<li>
+    <a class="ajax-link" href="/congressista/inscricao/viewevents"><i class="icon-edit"></i>
+        <span class="hidden-tablet"> Visualizar Eventos </span>
+    </a>
+</li>
+{% if get_meta('submissoes_ativas') == 1 and user.submissao == 'S' %}
+<li class="nav-header hidden-tablet">Submissões</li>
+<li>
+    <a class="ajax-link" href="/congressista/submissao/novo"><i class="icon-edit"></i>
+        <span class="hidden-tablet"> Submeter </span>
+    </a>
+</li>
+<li>
+    <a class="ajax-link" href="/congressista/submissao/"><i class="icon-edit"></i>
+        <span class="hidden-tablet"> Minhas Submissões </span>
+    </a>
+</li>
+{% endif %}

@@ -1,0 +1,92 @@
+{% include 'inc/header.html' %}
+<div class="container-fluid">
+        <div class="row-fluid">
+
+            <!-- left menu  -->
+            {% include 'inc/left-menu.html' %}
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <div id="content" class="span10">
+
+            <div class="row-fluid">
+                <div class="box span12">
+                    <div class="box-header well">
+                        <h2><i class="icon-info-sign"></i>
+                        {% if this.id %}
+                          Alterar Inscrição
+                        {% else %}
+                          Realizar Inscrição
+                        {% endif %}
+                        </h2>
+                    </div>
+                    <div class="box-content">
+
+                       {{ flash_messages('') }}
+
+                       <div class="tooltip-demo well">
+                          <p>
+                          Utilize o formulário abaixo para realizar sua inscrição, confirmada a inscrição você <strong>não</strong> poderá alterá-la! Para maiores informações sobre os eventos acesse o menu "Visualizar Eventos".
+                         </p>
+                         
+                       </div>
+                        <p>{{ get_meta('descricao_inscricao')| raw }}</p>
+                        <form method="POST" action="/congressista/inscricao/index/userId/{{this.userId}}" class="form-horizontal">
+
+                            <fieldset>
+                              <input type="hidden" value="{{ this.userId }}" name="userId" />
+                                {% for eventName in this.events|keys %}
+                                   <div class="control-group">
+                                       <label class="control-label" >{{ eventName }}: </label>
+                                        <div class="controls">
+                                          <select name="event-{{ this.events[eventName][0].idEventos  }}" data-rel="chosen">
+                                            {% for subEvent in this.events[eventName] %}
+                                              <option value="
+                                              {% if (subEvent.nVagas == 0 ) %}
+                                                -1
+                                              {% else %}
+                                                {{ subEvent.id }}
+                                              {% endif %}
+                                              ">
+                                                {{ subEvent.SubEventoNome }}
+                                                {% if (subEvent.nVagas > 0) %}
+                                                  - {{ subEvent.nVagas }} vaga(s)
+                                                {% elseif (subEvent.nVagas == 0) %}
+                                                  - LOTADO!
+                                                {% endif   %}
+                                              </option>
+                                            {% endfor %}
+                                          </select>
+                                          <span class="help-inline">Você tem direito a escolher 1 {{ eventName }}</span>
+                                        </div>
+                                    </div>
+                                  {% endfor %}
+
+                              <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Confirmar Inscrição</button>
+                              </div>
+
+                            </fieldset>
+
+                          </form>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- content ends -->
+            </div><!--/#content.span10-->
+                </div><!--/fluid-row-->
+
+        <hr>
+
+        {% include 'inc/modal.html' %}
+
+
+{% include 'inc/footer.html' %}
+

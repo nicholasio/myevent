@@ -1,0 +1,69 @@
+<div class="box span12">
+
+    <div class="box-header well">
+        <h2><i class="icon-info-sign"></i> Seja bem vindo ao sistema de inscrições do {{ get_meta('nome_evento') }}</h2>
+    </div>
+    <div class="box-content">
+        {{ flash_messages('') }}
+        <p><strong>Status:</strong>
+        {% if user.status == 'AP' %}
+            <span class="label label-warning">Aguardando Pagamento</span>
+        {% elseif user.status == 'PG' %}
+            <span class="label label-success">Pagamento Confirmado</span>
+        {% endif %}
+        <br /> <br />
+        {% if get_meta('submissoes_ativas') == 1 %}
+            <strong>Submissão de trabalhos?</strong>
+            {% if user.submissao == 'S' %}
+                <span class="label label-success">Sim</span>
+            {% else %}
+                <span class="label label-warning">Não</span>
+            {% endif %}
+        {% endif %}
+    </p>
+    <div class="tooltip-demo">
+        {% if not this.isInscrito and user.status == 'PG' %}
+            <p>Você ainda não fez sua inscrição em nenhum minicurso ou palestra, utilize o menu ao lado para realizar sua inscrição em algum minicurso.</p>
+        {% elseif user.status == 'AP' %}
+
+                <p>É preciso realizar o pagamento antes de realizar a sua inscrição!</p>
+                {{ get_meta('descricao_pagamento')|raw }}
+                <div class="well">
+                Valor a ser pago: R${% if user.submissao == 'S' %} {{ get_meta('valor_inscricao_com_submissao') }} 
+                    {% else %} {{ get_meta('valor_inscricao_sem_submissao') }} {% endif %}
+                </div>
+                {% if not user.payment_receipt %}
+            
+                <p>Envie o comprovante de pagamento: </p>
+                    <form action="/user/sendreceipt" method="post" enctype="multipart/form-data">
+                        <input type="file" name="payment-receipt-file" />
+                        <input type="hidden" name="id" value="{{ user._id }}" />
+                        <input type="submit" value="Enviar" />
+                    </form>
+                {% else %}
+                   <p>Você já enviou o seu comprovante de pagamento, para alterar, acesse o seu <a href="/user/edit/id/{{ user._id }}">perfil</a>.</p>
+                {% endif %}
+
+        {% elseif this.isInscrito %}
+            <p>Sua inscrição foi realizada com sucesso! Tenha um ótimo evento. </p>
+            <h4> Você está inscrito nos seguintes eventos:</h4>
+            <p>
+                {% for insc in this.inscricoes %}
+                    <strong>{{ insc.nomeEvento }}</strong> : {{ insc.SubEventoNome }} <br />
+                {% endfor %}
+            </p>
+            <p>
+                {% if this.registrationAvaliable %}
+                    <h4>Você ainda pode se inscrever em um dos eventos abaixo</h4>
+                    <ul>
+                        {% for insc in this.inscricoesDisponiveis %}
+                             <li> <strong>{{ insc.nomeEvento }}</strong> - {{ insc.SubEventoNome }} </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </p>
+        {% endif %}
+    </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

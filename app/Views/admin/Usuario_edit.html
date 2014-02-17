@@ -1,0 +1,148 @@
+{% include 'inc/header.html' %}
+<div class="container-fluid">
+        <div class="row-fluid">
+
+            <!-- left menu  -->
+            {% include 'inc/left-menu.html' %}
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+            </noscript>
+
+            <div id="content" class="span10">
+
+            <div class="row-fluid">
+                <div class="box span12">
+                    <div class="box-header well">
+                        <h2><i class="icon-info-sign"></i>
+                        {% if this.id %}
+                          Alterar Informações de Usuário
+                        {% else %}
+                          Cadastro de Usuários
+                        {% endif %}
+                        </h2>
+                    </div>
+                    <div class="box-content">
+                       {{ flash_messages('Erros no processamento do formulário') }}
+
+                       {% if this.id %}
+                          {%  set action = '/user/edit' %}
+                       {% else %}
+                          {%  set action = '/admin/user/novo' %}
+                       {% endif %}
+
+
+                        <form method="POST" action="{{ action }}" class="form-horizontal" enctype="multipart/form-data">
+
+                            <fieldset>
+
+                              <input type="hidden" name="id" value="{{ this.id }}" />
+
+                              {{ form_input("Nome Completo", "nomeCompleto", "text", this.nomeCompleto) }}
+
+                              {% if user._id == this.id and user.tipo != 'AD' %}
+                                {{ form_input("CPF", "cpf", "text", this.cpf, { 'class' : "cpf-mask input-xlarge", 'readonly' : 'readonly'}) }}
+                              {% else %}
+                                {{ form_input("CPF", "cpf", "text", this.cpf, { 'class' : "cpf-mask input-xlarge"}) }}
+                              {% endif %}
+
+                              {{ form_input("Celular (com DDD)", "celular", "text", this.celular, { 'class' : "phone-mask input-xlarge"}) }}
+
+                              <!-- Usuário não pode alterar seu proprio email  nem senha-->
+                              {% if user._id == this.id and user.tipo != 'AD' %}
+                                {{ form_input("Email", "email", "text",this.email, { 'readonly' : 'readonly'}) }}
+                              {% else %}
+
+                                {{ form_input("Email", "email", "text",this.email) }}
+
+                                {% if not this.id %}
+                                  {{ form_input("Confirmação de e-mail", 'confirm_email', 'text')  }}
+                                {% endif %}
+
+                              {% endif %}
+
+                              {{ form_input("Intituição de ensino/Empresa", "instituicao", "text",this.instituicao) }}
+
+                              <!-- Se não tiver editando -->
+                              {% if not this.id %}
+                                {{ form_input("Senha", "senha", "password") }}
+
+                                {{ form_input("Confirmação de Senha", 'confirm_senha', 'password')  }}
+                              {% endif %}
+
+                              {% if user.tipo == 'PA' %}
+                                <input type="hidden" name='status' value='{{ sha1(user.status) }}' />
+                                <input type="hidden" name='tipo' value='{{ sha1('PA') }}' />
+                              {% else %}
+                                {{ form_combo("Status", "status",
+                                  {
+                                    'bc5af774c819dc8b91c6b244583727dac105439a' : 'Aguardando Pagamento',
+                                    '6feddcb79702ae0cf4b8848e2cf40a86658050e8' : 'Pagamento Confirmado'
+                                  },
+                                  sha1(this.status) )
+                                }}
+
+                                {{
+                                  form_combo("Tipo", "tipo",
+                                  {
+                                    '39a0f31b2a7446e0041c02281ac2fd664aeae8e6' : 'Participante',
+                                    '6d95c1847219c633950f8f1ceca9761315abfc19' : 'Administrador'
+                                  },
+                                  sha1(this.tipo) )
+                                }}
+                              {% endif %}
+
+                              {% if user._id == this.id and user.tipo != 'AD' %}
+                                <input type="hidden" name='submissao' value='{{ sha1(this.submissao) }}' />
+                              {% else %}
+                                {{ form_combo("Submissão", 'submissao',
+                                  {
+                                    'b51a60734da64be0e618bacbea2865a8a7dcd669' : 'Não',
+                                    '02aa629c8b16cd17a44f3a0efec2feed43937642' : 'Sim'
+                                  },
+                                  sha1(this.submissao) )
+                                }}
+                              {% endif %}
+                                
+                                {{ form_input("Enviar Comprovante de Pagamento", 'payment-receipt-file', 'file')  }}
+                              {% if this.payment_receipt %}
+                                    <div class="control-group">
+                                      <label class="control-label" for="payment-receipt-file"> Comprovante atual: </label>
+                                        <div class="controls">
+                                          <img width="100px" src="/uploads/{{ this.payment_receipt }}" />
+                                          <span class="help-inline">
+                                            <a target="blank" href="/uploads/{{ this.payment_receipt }}" class="btn btn-warning">Baixar</a></span>
+                                        </div>
+                                    </div>
+                                  
+                              {% endif %}
+
+                              <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                                {% if this.id %}
+                                  <a href="/user/pass/id/{{ this.id }}" class="btn">Alterar senha </a>
+                                {% endif %}
+                              </div>
+
+                            </fieldset>
+
+                          </form>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- content ends -->
+            </div><!--/#content.span10-->
+                </div><!--/fluid-row-->
+
+        <hr>
+
+        {% include 'inc/modal.html' %}
+
+
+{% include 'inc/footer.html' %}
+

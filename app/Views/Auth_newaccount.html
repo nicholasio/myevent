@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'inc/head.html' %}
+</head>
+
+<body>
+        <div class="container-fluid">
+        <div class="row-fluid">
+
+            <div class="row-fluid">
+                <div class="span12 center login-header">
+                    <h2>{{ get_meta("nome_evento")  }} - Criar Conta</h2>
+                </div><!--/span-->
+            </div><!--/row-->
+
+            <div class="row-fluid">
+                <div class="well span6 center login-box">
+                    <div class="alert alert-info">
+                        Insira seus dados para fazer criar a conta <br />
+                        <strong></strong>
+                    </div>
+                    {{ flash_messages('') }}
+                    <form class="form-horizontal" action="/auth/newaccount" method="post">
+                        <fieldset>
+                            {{ form_input("Nome Completo", 'nomeCompleto', 'text', this.nomeCompleto)  }}
+
+                            {{ form_input("CPF", "cpf", "text", this.cpf, { 'class' : "cpf-mask input-xlarge"}) }}
+
+                            {{ form_input("Celular (com DDD)", "celular", "text", this.celular, { 'class' : "phone-mask input-xlarge"}) }}
+
+                            {{ form_input("Intituição de ensino/Empresa", "instituicao", "text",this.instituicao) }}
+
+                            {{ form_input("E-mail", 'email', 'text', this.email)  }}
+
+                            {{ form_input("Confirmação de e-mail", 'confirm_email', 'text')  }}
+
+                            {{ form_input("Senha", 'senha', 'password')  }}
+
+                            {{ form_input("Confirmação de Senha", 'confirm_senha', 'password')  }}
+
+                            {% if get_meta("submissoes_ativas") == 1 %}
+                                {{ form_combo("Tipo de Inscrição", 'submissao',
+                                      {
+                                        'b51a60734da64be0e618bacbea2865a8a7dcd669' : 'Sem submissão - R$ ' ~ get_meta('valor_inscricao_sem_submissao'),
+                                        '02aa629c8b16cd17a44f3a0efec2feed43937642' : 'Com submissão - R$ ' ~ get_meta(
+                                        'valor_inscricao_com_submissao')
+                                      },
+                                      sha1(this.submissao) )
+                                }}
+                            {% endif%}
+
+                            <div class="clearfix"></div>
+
+                            <div class="center span6">
+                                <div class="span6">
+                                     <button  type="submit" class="btn btn-primary">Criar Conta</button>
+                                </div>
+                                <div class="span4">
+                                    <a class="btn btn-info" href="/auth/login">
+                                        Voltar
+                                    </a>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div><!--/span-->
+            </div><!--/row-->
+                </div><!--/fluid-row-->
+
+    </div><!--/.fluid-container-->
+    {% include 'inc/scripts.html' %}
+
+</body>
+</html>

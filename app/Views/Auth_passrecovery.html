@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'inc/head.html' %}
+</head>
+
+<body>
+        <div class="container-fluid">
+        <div class="row-fluid">
+
+            <div class="row-fluid">
+                <div class="span12 center login-header">
+                    <h2>{{ get_meta("nome_evento") }} - Recuperar Senha</h2>
+                </div><!--/span-->
+            </div><!--/row-->
+
+            <div class="row-fluid">
+                <div class="well span6 center login-box">
+                    <div class="alert alert-info">
+                        Insira seu E-mail e CPF para recuperar a senha. <br />
+                    </div>
+                    {{ flash_messages('Erro') }}
+                    <form class="form-horizontal" action="/auth/passrecovery" method="post">
+                        <fieldset>
+                            {{ form_input("E-mail de cadastro", 'email', 'text', this.email)  }}
+
+                            {{ form_input("CPF", 'cpf', 'text', this.cpf,{ 'class' : "cpf-mask input-xlarge"})  }}
+                            <div class="clearfix"></div>
+
+                            <div class="center span6">
+                                <div class="span6">
+                                     <button  type="submit" class="btn btn-primary">Recuperar senha</button>
+                                </div>
+                                <div class="span4">
+                                    <a class="btn btn-info" href="/auth/login">
+                                        Voltar
+                                    </a>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div><!--/span-->
+            </div><!--/row-->
+                </div><!--/fluid-row-->
+
+    </div><!--/.fluid-container-->
+    {% include 'inc/scripts.html' %}
+
+</body>
+</html>
