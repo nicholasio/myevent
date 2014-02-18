@@ -60,6 +60,10 @@ class Submissao extends AppController {
 
         $eventsModel = new \Models\Evento();
         $this->view->eventos = $eventsModel->findAll(['submissoes' => '1']);
+        $this->view->evento_atual =  $bd->query("SELECT * FROM Eventos, Submissoes WHERE 
+                                                    Eventos.id = Submissoes.idEventos AND Submissoes.id = {$id}
+                                                ")[0];
+
         $this->view->users   = $this->users;
         $autores                = $bd->query("SELECT Usuarios_id FROM Submissoes_autores 
                                           WHERE Submissoes_id = {$id}

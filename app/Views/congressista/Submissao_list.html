@@ -55,7 +55,7 @@
                                             Edit
                                         </a>
                                         
-                                        {% if date() < submission.deadline_inicial %}
+                                        {% if "now" | date('Y-m-d') < submission.deadline_inicial | date('Y-m-d') %}
 	                                        <a class="btn btn-danger" href="/congressista/submissao/del/id/{{ submission.id }}">
 	                                            <i class="icon-trash icon-white"></i>
 	                                            Del

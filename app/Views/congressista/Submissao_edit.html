@@ -14,7 +14,9 @@
             </noscript>
 
             <div id="content" class="span10">
-            {% if date() > this.deadline_inicial %}
+              
+            <!-- Se as submissoes para este evento estiverem desativadas -->
+            {% if this.id and "now" | date('Y-m-d') > this.evento_atual.deadline_inicial | date('Y-m-d') %}
                 {% set readonlybool = true%}
                 {% set readonlyarr = {'readonly' : 'readonly'} %}
                 {% set readonly %}
