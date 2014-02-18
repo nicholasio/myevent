@@ -80,10 +80,11 @@ class BaseModel {
 
         foreach($props as $prop) {
 
-            if( $this->isRequired() && in_array($prop->getName(), $this->required) &&
-                ( is_null($this->{$prop->getName()}) || !isset($this->{$prop->getName()}))
-            )
+            if (in_array($prop->getName(), $this->required) && 
+                ( is_null($this->{$prop->getName()}) || !isset($this->{$prop->getName()}) || empty($this->{$prop->getName()}) )
+               )
             {
+
                 $this->addErrorMessage( ucfirst($prop->getName()) . ' é obrigatório(a)!');
             } else if(  isset($this->{$prop->getName()}) && ! is_null($this->{$prop->getName()}) )
                 $arrProps[$prop->getName()] = $this->{$prop->getName()};

@@ -27,7 +27,9 @@
                               <tr>
                                   <th>Evento</th>
                                   <th>Título Trabalho</th>
+                                  <th>Status</th>
                                   <th>Data Submissão</th>
+
 
                               </tr>
                           </thead>
@@ -35,22 +37,30 @@
                             {% for submission in this.submissions %}
                                 <tr>
                                     <td width="150">{{ submission.nomeEvento }}</td>
-                                    <td class="center">{{ submission.tituloTrabalho }}</a>
-                                    <td class="center">{{ submission.createdSubmission | date("d/m/Y - H:m:s")}} </td>
+                                    <td class="center">{{ submission.tituloTrabalho }}</td>
+                                    <td>
+                                    	{% if submission.status == 'AG' %}
+                                            <span class="label label-warning">Em Análise</span>
+                                        {% else %}
+                                            <span class="label label-success">Aprovado</span>
+                                        {% endif %}
+                                     </td>
+
+                                    <td class="center">{{ submission.createdSubmission | date("d/m/Y - H:i:s")}} </td>
                                     
                                     <td width="300" class="center">
+                                    	
                                         <a class="btn btn-info" href="/congressista/submissao/edit/id/{{ submission.id }}">
                                             <i class="icon-edit icon-white"></i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger" href="/congressista/submissao/del/id/{{ submission.id }}">
-                                            <i class="icon-trash icon-white"></i>
-                                            Del
-                                        </a>
-                                       
-                                        <a target="_blank" class="btn btn-warning" href="/uploads/{{ user.payment_receipt }}" >
-                                            Comprovante
-                                        </a>
+                                        
+                                        {% if date() < submission.deadline_inicial %}
+	                                        <a class="btn btn-danger" href="/congressista/submissao/del/id/{{ submission.id }}">
+	                                            <i class="icon-trash icon-white"></i>
+	                                            Del
+	                                        </a>
+                                        {% endif %}
                                      </td>
                                 </tr>
                             {% endfor %}

@@ -14,13 +14,23 @@
             </noscript>
 
             <div id="content" class="span10">
-
+            {% if date() > this.deadline_inicial %}
+                {% set readonlybool = true%}
+                {% set readonlyarr = {'readonly' : 'readonly'} %}
+                {% set readonly %}
+                    disabled
+                {% endset %}
+              {% endif %}
             <div class="row-fluid">
                 <div class="box span12">
                     <div class="box-header well">
                         <h2><i class="icon-info-sign"></i>
                         {% if this.author_id %}
-                          Editar Submissão
+                          {% if not readonlybool %}
+                            Editar Submissão
+                          {% else %}
+                          Visualizar Submissão
+                          {% endif %}
                         {% else %}
                           Submeter Trabalho
                         {% endif %}
@@ -30,7 +40,7 @@
 
                        {{ flash_messages('Erros no processamento do formulário') }}
 
-                       {% if this.author_id %}
+                       {% if this.id %}
                           {%  set action = '/congressista/submissao/edit' %}
                        {% else %}
                           {%  set action = '/congressista/submissao/save' %}
@@ -39,14 +49,15 @@
                         <form method="POST" action="{{ action }}" class="form-horizontal" enctype="multipart/form-data">
 
                             <fieldset>
-
+                              <input type="hidden" name="id" value="{{ this.id }}" />
                               <input type="hidden" name="author_id" value="{{ user._id }}" />
 
-                              {% if this.eventos | length > 0 %}
+                              {% if this.eventos | length > 0 and get_meta('submissoes_ativas') == 1 %}
+                                
                                  <div class="control-group">
                                   <label class="control-label" >Evento: </label>
                                     <div class="controls">
-                                      <select name="idEventos">
+                                      <select name="idEventos" {{ readonly }}>
                                         {% for evento in this.eventos %}
                                           <option value="{{ evento.id }}"
                                           {% if this.idEventos == evento.id %}
@@ -57,26 +68,59 @@
                                       </select>
                                     </div>
                                   </div>
-                                  {{ form_input("Título do Trabalho", 'titulo_trabalho', 'text')  }}
+                                  {{ form_input("Título do Trabalho", 'titulo_trabalho', 'text', this.titulo_trabalho, readonlyarr )  }}
                                    <div class="control-group">
                                    <label class="control-label" >Autores: </label>
                                     <div class="controls">
-                                      <select style="300px" name="autores[]" class="multi-select" multiple="">
+                                      <select style="300px" name="autores[]" class="multi-select" multiple="" {{ readonly }}>
                                         {% for _user in this.users %}
                                           {% if _user.id != user._id %}
-                                            <option value="{{ _user.id }}">{{ _user.nomeCompleto }}</option>
+                                            <option value="{{ _user.id }}" 
+                                              {% if _user.id in this.autores %}
+                                                selected
+                                              {% endif %}
+                                             >
+                                             {{ _user.nomeCompleto }}
+                                           </option>
                                           {% endif %}
                                         {% endfor %}
                                       </select> 
                                       <span class="help-inline">Selecione os autores além de você.</span>
                                     </div>
                                   </div>
-                                  {{ form_input("Trabalho (blind review)", 'arquivo_inicial', 'file'," Somente arquivos .pdf")  }}
-
-                                  <div class="form-actions">
-                                    <button type="submit" class="btn btn-primary">Submeter</button>
-
-                                  </div>
+                                  {% if not readonlybool %}
+                                    {{ form_input("Trabalho (blind review)", 'file_arquivo_inicial', 'file'," Somente arquivos .pdf")  }}
+                                  {% endif %}
+                                  
+                                  {% if this.arquivo_inicial  %}
+                                    <div class="control-group">
+                                     <label class="control-label" >Arquivo enviado: </label>
+                                      <div class="controls">
+                                        <a target="_blank" class="btn" href="/uploads/artigos/{{ this.arquivo_inicial }}">Baixar arquivo</a>
+                                        <span class="help-inline">Baixe o arquivo que você enviou, para sobrescrever seu arquivo, basta enviar novamente o artigo.</span>
+                                      </div>
+                                    </div>
+                                  {% endif %}
+                                  
+                                  {% if readonlybool and this.id %}
+                                    <div class="control-group">
+                                     <label class="control-label" >Status: </label>
+                                      <div class="controls">
+                                        
+                                          {% if this.status == 'AG' %}
+                                            <span class="label label-warning">Em Análise</span>
+                                          {% else %}
+                                            <span class="label label-success">Aprovado</span>
+                                          {% endif %}
+                                        
+                                      </div>
+                                    </div>
+                                  {% endif %}
+                                  {% if not readonlybool %}
+                                    <div class="form-actions">
+                                      <button type="submit" class="btn btn-primary">Submeter</button>
+                                    </div>
+                                  {% endif %}
                             {% else %}
                               <p>Não existem submissões disponívels para você neste momento.</p>
                             {% endif %}

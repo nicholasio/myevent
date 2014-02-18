@@ -20,11 +20,13 @@ abstract class Model extends BaseModel{
 		$dados = $this->getPropetiesToSave();
 		$tableName = self::getTableName();
 
-		if ( ! empty($this->errorMessages) )
+		if ( ! empty($this->getErrorMessages()) )
 			return false;
 
-		if ( isset($this->id) && $this->id !== false )
-			return $this->getBd()->update($dados, "{$tableName}.id = {$this->id}");
+		if ( isset($this->id) && $this->id !== false ){
+			$this->getBd()->update($dados, "{$tableName}.id = {$this->id}");
+			return $this->id;
+		}
 		else{
 			$this->getBd()->insert($dados);
 			$this->id = $this->getBd()->lastInsertId();

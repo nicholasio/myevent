@@ -106,7 +106,8 @@ trait FrontController  {
         $bd     =  \Moxo\Banco::getInstance();
         $sql    = "
         SELECT Submissoes.id as id, Eventos.nome as nomeEvento, Submissoes.created as createdSubmission, 
-        Eventos.id as idEvento, Submissoes.titulo_trabalho as tituloTrabalho
+        Eventos.id as idEvento, Submissoes.titulo_trabalho as tituloTrabalho, Submissoes.status as status,
+        Eventos.deadline_inicial as deadline_inicial
         FROM Submissoes, Eventos WHERE
             Submissoes.idEventos = Eventos.id AND Submissoes.author_id = '{$userId}'";
         $events = $bd->query($sql);

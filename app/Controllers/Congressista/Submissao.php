@@ -31,7 +31,7 @@ class Submissao extends AppController {
         $result = parent::save();
 
         if($result !== false){
-            $this->go($this->getCurrentModule(),'submissao');
+            $this->go($this->getCurrentModule(),'submissao', 'edit', ['id' => $result ]);
         }
     }
 
@@ -53,6 +53,29 @@ class Submissao extends AppController {
         parent::del();
         $this->go($this->getCurrentModule(), 'submissao' );
     }
+
+    public function edit() {
+        $id     = $this->getRequesterId();
+        $bd     =  \Moxo\Banco::getInstance();
+
+        $eventsModel = new \Models\Evento();
+        $this->view->eventos = $eventsModel->findAll(['submissoes' => '1']);
+        $this->view->users   = $this->users;
+        $autores                = $bd->query("SELECT Usuarios_id FROM Submissoes_autores 
+                                          WHERE Submissoes_id = {$id}
+                                        ");
+        $arrAutores = [];
+
+        foreach($autores as $autor) {
+            $arrAutores[] = $autor->Usuarios_id;
+        }
+
+        $this->view->autores = $arrAutores; 
+        parent::edit();
+
+    }
+
+
     public function index_action() {
         $this->setViewName('list');
         $this->view->submissions = $this->getAllSubmissionsFromCurrentUser();
