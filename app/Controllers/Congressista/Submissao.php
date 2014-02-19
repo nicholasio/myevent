@@ -47,7 +47,7 @@ class Submissao extends AppController {
         if ( ! empty($model->arquivo_final) ) {
             unlink( UPLOADS_DIR . '/artigos/' . $model->arquivo_final);
         }
-        
+
         $bd     =  \Moxo\Banco::getInstance();
         $bd->exec("DELETE FROM Submissoes_autores WHERE Submissoes_id = '{$id}' ");
 
@@ -102,6 +102,7 @@ class Submissao extends AppController {
 
         $model = $this->getModel();
         $model->status = "AP";
+        $model->deleteAutores(false);
         $model->save();
         $this->go($this->getCurrentModule(), 'submissao', 'view_all');
     }
@@ -109,12 +110,14 @@ class Submissao extends AppController {
     public function disapprove() {
         $model = $this->getModel();
         $model->status = "RP";
+        $model->deleteAutores(false);
         $model->save();
         $this->go($this->getCurrentModule(), 'submissao', 'view_all');
     }
     public function analysis() {
         $model = $this->getModel();
         $model->status = "AG";
+        $model->deleteAutores(false);
         $model->save();
         $this->go($this->getCurrentModule(), 'submissao', 'view_all');
     }

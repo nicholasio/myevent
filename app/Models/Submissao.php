@@ -17,9 +17,16 @@ class Submissao extends BaseModel {
     public $comentarios;
     public $created;
 
+    private $deleteAutores;
+
 
     public function __construct($id = null) {
         parent::__construct($id);
+        $this->deleteAutores = true;
+    }
+
+    public function deleteAutores( $bool ) {
+        $this->deleteAutores = $bool;
     }
 
     public function save() {
@@ -66,9 +73,14 @@ class Submissao extends BaseModel {
         if ( $submission_id ) {
             $bd     =  \Moxo\Banco::getInstance();
 
-            if( is_array($_POST['autores']) && ! empty($_POST['autores']) ) {
+            if ( $this->deleteAutores ) {
                 $sql = "DELETE FROM Submissoes_autores WHERE Submissoes_id = {$submission_id}";
                 $bd->exec($sql);
+            }
+
+            if( is_array($_POST['autores']) && ! empty($_POST['autores']) ) {
+                /*$sql = "DELETE FROM Submissoes_autores WHERE Submissoes_id = {$submission_id}";
+                $bd->exec($sql);*/
 
                 foreach( $_POST['autores'] as $autor_id ) {
                     $sql = "INSERT INTO Submissoes_autores (Submissoes_id, Usuarios_id) values ('{$submission_id}', '{$autor_id}')";
