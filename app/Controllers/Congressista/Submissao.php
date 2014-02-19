@@ -47,6 +47,7 @@ class Submissao extends AppController {
         if ( ! empty($model->arquivo_final) ) {
             unlink( UPLOADS_DIR . '/artigos/' . $model->arquivo_final);
         }
+        
         $bd     =  \Moxo\Banco::getInstance();
         $bd->exec("DELETE FROM Submissoes_autores WHERE Submissoes_id = '{$id}' ");
 
