@@ -69,12 +69,14 @@
 
                                       </div>
                                 </div>
-                                {% if this.deadline_inicial != "0000-00-00"%}
+                                
+
+                                {% if this.deadline_inicial and this.deadline_inicial != "0000-00-00"%}
                                   {% set deadline_inicial = this.deadline_inicial|date("d/m/Y")%}
                                 {% else %}
                                   {% set deadline_inicial = "" %}
                                 {% endif %}
-                                {% if this.deadline_final != "0000-00-00" %}
+                                {% if this.deadline_final and this.deadline_final != "0000-00-00" %}
                                   {% set deadline_final = this.deadline_final|date("d/m/Y")%}
                                 {% else %}
                                   {% set deadline_final = "" %}

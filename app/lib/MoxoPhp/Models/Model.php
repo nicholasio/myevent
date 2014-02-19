@@ -20,7 +20,7 @@ abstract class Model extends BaseModel{
 		$dados = $this->getPropetiesToSave();
 		$tableName = self::getTableName();
 
-		if ( ! empty($this->getErrorMessages()) )
+		if ( $this->getErrorMessages() )
 			return false;
 
 		if ( isset($this->id) && $this->id !== false ){
