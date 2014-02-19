@@ -65,10 +65,10 @@ class Submissao extends BaseModel {
         $submission_id = parent::save();    
         if ( $submission_id ) {
             $bd     =  \Moxo\Banco::getInstance();
-            $sql = "DELETE FROM Submissoes_autores WHERE Submissoes_id = {$submission_id}";
-            $bd->exec($sql);
-            if( is_array($_POST['autores']) && ! empty($_POST['autores']) ) {
 
+            if( is_array($_POST['autores']) && ! empty($_POST['autores']) ) {
+                $sql = "DELETE FROM Submissoes_autores WHERE Submissoes_id = {$submission_id}";
+                $bd->exec($sql);
 
                 foreach( $_POST['autores'] as $autor_id ) {
                     $sql = "INSERT INTO Submissoes_autores (Submissoes_id, Usuarios_id) values ('{$submission_id}', '{$autor_id}')";
