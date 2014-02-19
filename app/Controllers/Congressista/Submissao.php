@@ -51,7 +51,9 @@ class Submissao extends AppController {
         $bd->exec("DELETE FROM Submissoes_autores WHERE Submissoes_id = '{$id}' ");
 
         parent::del();
-        $this->go($this->getCurrentModule(), 'submissao' );
+
+        $action = ( $this->authUser->getUserData()->tipo == 'AD' ) ? 'view_all' : '';
+        $this->go($this->getCurrentModule(), 'submissao' , $action);
     }
 
     public function edit() {
@@ -83,5 +85,31 @@ class Submissao extends AppController {
     public function index_action() {
         $this->setViewName('list');
         $this->view->submissions = $this->getAllSubmissionsFromCurrentUser();
+    }
+
+    public function view_all() {
+        $this->setViewName('list');
+        $this->view->submissions = $this->getAllSubmissions();
+    }
+
+    public function approve() {
+
+        $model = $this->getModel();
+        $model->status = "AP";
+        $model->save();
+        $this->go($this->getCurrentModule(), 'submissao', 'view_all');
+    }
+
+    public function disapprove() {
+        $model = $this->getModel();
+        $model->status = "RP";
+        $model->save();
+        $this->go($this->getCurrentModule(), 'submissao', 'view_all');
+    }
+    public function analysis() {
+        $model = $this->getModel();
+        $model->status = "AG";
+        $model->save();
+        $this->go($this->getCurrentModule(), 'submissao', 'view_all');
     }
 }

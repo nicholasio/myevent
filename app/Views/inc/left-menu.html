@@ -30,6 +30,14 @@
                         <span class="hidden-tablet"> Listar Eventos </span>
                     </a>
                 </li>
+                {% if get_meta('submissoes_ativas') == 1 %}
+                    <li class="nav-header hidden-tablet">Submissões</li>
+                    <li>
+                        <a class="ajax-link" href="/congressista/submissao/view_all"><i class="icon-edit"></i>
+                            <span class="hidden-tablet"> Visualizar Submissões</span>
+                        </a>
+                    </li>
+                {% endif %}
                 <li class="nav-header hidden-tablet">Configurações</li>
                 <li>
                     <a class="ajax-link" href="/admin/configs"><i class="icon-edit"></i>

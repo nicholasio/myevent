@@ -16,7 +16,7 @@
             <div id="content" class="span10">
               
             <!-- Se as submissoes para este evento estiverem desativadas -->
-            {% if this.id and "now" | date('Y-m-d') > this.evento_atual.deadline_inicial | date('Y-m-d') %}
+            {% if user.tipo == "PA" and this.id and "now" | date('Y-m-d') > this.evento_atual.deadline_inicial | date('Y-m-d') %}
                 {% set readonlybool = true%}
                 {% set readonlyarr = {'readonly' : 'readonly'} %}
                 {% set readonly %}
@@ -52,7 +52,12 @@
 
                             <fieldset>
                               <input type="hidden" name="id" value="{{ this.id }}" />
-                              <input type="hidden" name="author_id" value="{{ user._id }}" />
+                              {{ this.idUsuarios }}
+                              <input type="hidden" name="author_id" value="{% if this.author_id %}
+                                {{ this.author_id }}
+                              {% else %}
+                                {{ user._id }}
+                              {% endif %}"/>
 
                               {% if this.eventos | length > 0 and get_meta('submissoes_ativas') == 1 %}
                                 
@@ -109,20 +114,44 @@
                                      <label class="control-label" >Status: </label>
                                       <div class="controls">
                                         
-                                          {% if this.status == 'AG' %}
+                                      {% if thisstatus == 'AG' %}
                                             <span class="label label-warning">Em Análise</span>
-                                          {% else %}
+                                      {% elseif this.status == "AP" %}
                                             <span class="label label-success">Aprovado</span>
-                                          {% endif %}
+                                      {% else %}
+                                            <span class="label label-trash">Reprovado</span>
+                                      {% endif %}
                                         
                                       </div>
                                     </div>
                                   {% endif %}
+                                  
+                                  {% if user.tipo == "AD" %}
+                                    <div class="control-group">
+                                        <label class="control-label" for="comentarios">Comentários </label>
+                                        <div class="controls">
+                                          <textarea class="cleditor" name='comentarios' style="width: 400px;height:150px;" id='comentarios'>{{ this.comentarios }}</textarea>
+                                        </div>
+                                    </div>
+                                  {% endif %}
+
+                                  {% if user.tipo == "PA" and this.comentarios %}
+                                    <div class="control-group">
+                                        <label class="control-label" for="comentarios">Comentários </label>
+                                        <div class="controls">
+                                          {{ this.comentarios | raw }}
+                                        </div>
+                                    </div>
+                                    
+                                  {% endif %}
+
                                   {% if not readonlybool %}
                                     <div class="form-actions">
                                       <button type="submit" class="btn btn-primary">Submeter</button>
                                     </div>
                                   {% endif %}
+
+
                             {% else %}
                               <p>Não existem submissões disponívels para você neste momento.</p>
                             {% endif %}

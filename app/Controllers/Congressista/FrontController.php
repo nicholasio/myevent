@@ -107,9 +107,24 @@ trait FrontController  {
         $sql    = "
         SELECT Submissoes.id as id, Eventos.nome as nomeEvento, Submissoes.created as createdSubmission, 
         Eventos.id as idEvento, Submissoes.titulo_trabalho as tituloTrabalho, Submissoes.status as status,
-        Eventos.deadline_inicial as deadline_inicial
-        FROM Submissoes, Eventos WHERE
-            Submissoes.idEventos = Eventos.id AND Submissoes.author_id = '{$userId}'";
+        Eventos.deadline_inicial as deadline_inicial, Usuarios.id as idUsuarios
+        FROM Submissoes, Eventos, Usuarios WHERE
+            Submissoes.idEventos = Eventos.id AND Submissoes.author_id = Usuarios.id AND Submissoes.author_id = '{$userId}'";
+        $events = $bd->query($sql);
+
+        return $events;
+    }
+
+    public function getAllSubmissions(){
+        
+
+        $bd     =  \Moxo\Banco::getInstance();
+        $sql    = "
+        SELECT Submissoes.id as id, Eventos.nome as nomeEvento, Submissoes.created as createdSubmission, 
+        Eventos.id as idEvento, Submissoes.titulo_trabalho as tituloTrabalho, Submissoes.status as status,
+        Eventos.deadline_inicial as deadline_inicial, Usuarios.nomeCompleto as nomeCompleto, Usuarios.email as emailUsuario
+        FROM Submissoes, Eventos, Usuarios WHERE
+            Submissoes.idEventos = Eventos.id AND Submissoes.author_id = Usuarios.id";
         $events = $bd->query($sql);
 
         return $events;

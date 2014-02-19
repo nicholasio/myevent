@@ -14,6 +14,7 @@ class Submissao extends BaseModel {
     public $arquivo_final;
     public $titulo_trabalho;
     public $status; 
+    public $comentarios;
     public $created;
 
 
