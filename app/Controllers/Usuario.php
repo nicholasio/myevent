@@ -56,7 +56,8 @@ class Usuario extends AppController{
                 return false;
             }
             if ( is_null($user->celular) || empty($user->celular) ){
-                $this->flashMessages->add('e', 'Celular é obritório');
+                $this->flashMessages->add('e', 'Celular é obrigatório');
+                return false;
             }
         }
 
