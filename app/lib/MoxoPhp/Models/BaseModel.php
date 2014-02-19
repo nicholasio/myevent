@@ -80,7 +80,7 @@ class BaseModel {
 
         foreach($props as $prop) {
 
-            if (in_array($prop->getName(), $this->required) && 
+            if ( $this->isRequired() && in_array($prop->getName(), $this->required) && 
                 ( is_null($this->{$prop->getName()}) || !isset($this->{$prop->getName()}) || empty($this->{$prop->getName()}) )
                )
             {

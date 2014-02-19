@@ -67,6 +67,8 @@
                                               Edit
                                             {% elseif "now" | date('Y-m-d') > submission.deadline_inicial | date('Y-m-d') %}
                                               Visualizar
+                                            {% else %}
+                                              Edit
                                             {% endif %}
                                         </a>
                                         

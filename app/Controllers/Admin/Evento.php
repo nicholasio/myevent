@@ -36,11 +36,13 @@ class Evento extends AppController {
         parent::del();
         $this->go('admin','evento');
     }
-
     public function save() {
         $result = parent::save();
         if($result !== false){
             $this->go('admin','evento','edit', ['id' => $result]);
+        } else {
+            $this->getModel()->deadline_inicial = '';
+            $this->getModel()->deadline_final = '';
         }
     }
 

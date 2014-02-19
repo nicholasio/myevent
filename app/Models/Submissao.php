@@ -50,6 +50,18 @@ class Submissao extends BaseModel {
 
 
         }
+         if ( ! empty( $_FILES['file_arquivo_final'] ) ) {
+            $upload = \Moxo\Helpers\UploadHelper::factory('uploads/artigos');
+            $upload->file($_FILES['file_arquivo_final']);
+
+
+            $results = $upload->upload();
+            
+            $this->arquivo_final = $results['filename'];
+
+
+        }
+        
         $submission_id = parent::save();    
         if ( $submission_id ) {
             $bd     =  \Moxo\Banco::getInstance();

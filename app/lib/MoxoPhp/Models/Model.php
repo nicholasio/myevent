@@ -5,7 +5,7 @@ use Moxo;
 abstract class Model extends BaseModel{
 
 	public function __construct($id = null) {
-		$this->__isRequired = true;
+		$this->setRequired(true);
 		if ( isset($id) ) {
 			$this->id = $id;
 			$this->populate();

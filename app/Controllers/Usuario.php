@@ -302,7 +302,7 @@ class Usuario extends AppController{
                 }
 
                 $user->payment_receipt = $results['filename'];
-
+                $user->setRequired(false);
                 if ( $user->save() && $redirect == true ) {
                     $this->flashMessages->add('s', 'Comprovante de pagamento enviado com sucesso');
                     $this->go($this->getCurrentModule(), 'user', 'edit', ['id' => $id]);

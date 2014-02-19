@@ -1,4 +1,4 @@
-{% include 'inc/header.html' %}
+  {% include 'inc/header.html' %}
 
 <div class="container-fluid">
         <div class="row-fluid">
@@ -69,8 +69,19 @@
 
                                       </div>
                                 </div>
-                                {{ form_input("Deadline Submissão (blind review): ", 'deadline_inicial', 'text', this.deadline_inicial|date("d/m/Y"), { 'class' : 'datepicker' } )  }}
-                                {{ form_input("Deadline Submissão (versão final): ", 'deadline_final', 'text', this.deadline_final|date("d/m/Y"), { 'class' : 'datepicker' } )  }}
+                                {% if this.deadline_inicial != "0000-00-00"%}
+                                  {% set deadline_inicial = this.deadline_inicial|date("d/m/Y")%}
+                                {% else %}
+                                  {% set deadline_inicial = "" %}
+                                {% endif %}
+                                {% if this.deadline_final != "0000-00-00" %}
+                                  {% set deadline_final = this.deadline_final|date("d/m/Y")%}
+                                {% else %}
+                                  {% set deadline_final = "" %}
+                                {% endif %}
+
+                                {{ form_input("Deadline Submissão (blind review): ", 'deadline_inicial', 'text', deadline_inicial, { 'class' : 'datepicker' } )  }}
+                                {{ form_input("Deadline Submissão (versão final): ", 'deadline_final', 'text', deadline_final, { 'class' : 'datepicker' } )  }}
                               {% endif %}
                               <div class="form-actions">
                                 <button type="submit" class="btn btn-primary">Salvar</button>

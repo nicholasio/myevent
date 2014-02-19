@@ -145,7 +145,7 @@ abstract class CRUD extends BaseController {
 
                 $this->flashMessages->add('e', $errMsg);
 
-                return -1;
+                return false;
             }
 
         }

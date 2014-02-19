@@ -29,7 +29,7 @@ class Submissao extends AppController {
     public function save() {
 
         $result = parent::save();
-
+        
         if($result !== false){
             $this->go($this->getCurrentModule(),'submissao', 'edit', ['id' => $result ]);
         }

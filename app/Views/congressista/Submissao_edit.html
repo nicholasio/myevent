@@ -45,7 +45,7 @@
                        {% if this.id %}
                           {%  set action = '/congressista/submissao/edit' %}
                        {% else %}
-                          {%  set action = '/congressista/submissao/save' %}
+                          {%  set action = '/congressista/submissao/novo' %}
                        {% endif %}
 
                         <form method="POST" action="{{ action }}" class="form-horizontal" enctype="multipart/form-data">
@@ -125,7 +125,7 @@
                                       </div>
                                     </div>
                                   {% endif %}
-                                  
+
                                   {% if user.tipo == "AD" %}
                                     <div class="control-group">
                                         <label class="control-label" for="comentarios">Comentários </label>
@@ -144,8 +144,23 @@
                                     </div>
                                     
                                   {% endif %}
+                                  
+                                  {% if ( this.status == "AP" and "now" | date('Y-m-d') <= this.evento_atual.deadline_final | date('Y-m-d') ) 
+                                  %}  
+                                  
+                                    {{ form_input("Trabalho (versão final)", 'file_arquivo_final', 'file'," Somente arquivos .pdf")  }}
 
-                                  {% if not readonlybool %}
+                                  {% endif %}
+                                  {% if this.arquivo_final  %}
+                                    <div class="control-group">
+                                     <label class="control-label" >Arquivo enviado: </label>
+                                      <div class="controls">
+                                        <a target="_blank" class="btn" href="/uploads/artigos/{{ this.arquivo_final }}">Baixar arquivo</a>
+                                        <span class="help-inline">Baixe o arquivo que você enviou, para sobrescrever seu arquivo, basta enviar novamente o artigo.</span>
+                                      </div>
+                                    </div>
+                                  {% endif %}
+                                  {% if not readonlybool or ( this.status == "AP" and "now" | date('Y-m-d') <= this.evento_atual.deadline_final | date('Y-m-d') ) %}
                                     <div class="form-actions">
                                       <button type="submit" class="btn btn-primary">Submeter</button>
                                     </div>
