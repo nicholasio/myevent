@@ -129,5 +129,22 @@ trait FrontController  {
 
         return $events;
     }
+
+    public function getAllSubmissionsLog(){
+        
+
+        $bd     =  \Moxo\Banco::getInstance();
+        $sql    = "
+        SELECT Submissoes_Log.id as id, Eventos.nome as nomeEvento, 
+        Eventos.id as idEvento, Submissoes_Log.titulo_trabalho as tituloTrabalho, Submissoes_Log.status as status,
+        Eventos.deadline_inicial as deadline_inicial, Usuarios.nomeCompleto as nomeCompleto, Usuarios.email as emailUsuario,
+        Submissoes_Log.date as dateModificacao, Submissoes_Log.operation as logOperation,
+        Submissoes_Log.arquivo_inicial as  arquivo_inicial, Submissoes_Log.arquivo_final
+        FROM Submissoes_Log, Eventos, Usuarios WHERE
+            Submissoes_Log.idEventos = Eventos.id AND Submissoes_Log.author_id = Usuarios.id ORDER BY Submissoes_Log.date DESC";
+        $events = $bd->query($sql);
+
+        return $events;
+    }
 }
 

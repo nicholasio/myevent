@@ -92,6 +92,11 @@ class Submissao extends AppController {
         $this->view->submissions = $this->getAllSubmissions();
     }
 
+    public function view_log() {
+        $this->setViewName('log_list');
+        $this->view->submissions = $this->getAllSubmissionsLog();
+    }
+
     public function approve() {
 
         $model = $this->getModel();
