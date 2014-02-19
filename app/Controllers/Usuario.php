@@ -283,7 +283,7 @@ class Usuario extends AppController{
         if ( $this->isPostRequest() ) {
             if ( ! empty( $_FILES['payment-receipt-file'] ) ) {
                 $upload = \Moxo\Helpers\UploadHelper::factory('uploads');
-                $upload->file($_FILES['payment-receipt-file']);
+                $upload->file($_FILES['payment-receipt-file']['name']);
 
                 /*$validation = new validation;
 
