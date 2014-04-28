@@ -161,11 +161,11 @@ abstract class Model extends BaseModel{
 		return $this->_find($keys, $orderby, $limit);
 	}
 
-	public static function fetchAll() {
+	public static function fetchAll($where = null, $orderby = null, $limit = null) {
 		$class = get_called_class();
 		$all = new $class();
 
-		$data = $all->getBd()->read('*');
+		$data = $all->getBd()->read('*', $where, $orderby, $limit);
 
 		return $data;
 

@@ -54,11 +54,46 @@
                                       <textarea class="cleditor" name='meta_data[descricao_pagamento]' style="width: 400px;height:150px;" id='meta_data[descricao_pagamento]'>{{ get_meta('descricao_pagamento') }}</textarea>
                                     </div>
                                 </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label" for="meta_data[info_homologada]">Informações a ser exibido após inscrição confirmada: </label>
+                                    <div class="controls">
+                                      <textarea class="cleditor" name='meta_data[info_homologada]' style="width: 400px;height:150px;" id='meta_data[info_homologada]'>{{ get_meta('info_homologada') }}</textarea>
+                                    </div>
+                                </div>
 
                                 <div class="control-group">
                                     <label class="control-label" for="meta_data[descricao_inscricao]">Informações a serem exibidas na tela de inscrição: </label>
                                     <div class="controls">
                                       <textarea class="cleditor" name='meta_data[descricao_inscricao]' style="width: 400px;height:150px;" id='meta_data[descricao_inscricao]'>{{ get_meta('descricao_inscricao') }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" >Evento Gratuito: </label>
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" id="radio_evento_gratuito" value="1" name="meta_data[evento_gratuito]"
+                                            {% if get_meta('evento_gratuito') == 1 %} checked {% endif %} /> Sim
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="radio_evento_gratuito" value="0" name="meta_data[evento_gratuito]"
+                                            {% if get_meta('evento_gratuito') == 0 %} checked {% endif %}/> Não
+                                        </label>
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" >Ativar Inscrições: </label>
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" id="radio_inscricoes_ativas" value="1" name="meta_data[inscricoes_ativas]"
+                                            {% if get_meta('inscricoes_ativas') == 1 %} checked {% endif %} /> Sim
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="radio_inscricoes_ativas" value="0" name="meta_data[inscricoes_ativas]"
+                                            {% if get_meta('inscricoes_ativas') == 0 %} checked {% endif %}/> Não
+                                        </label>
+
                                     </div>
                                 </div>
                                 <div class="control-group">

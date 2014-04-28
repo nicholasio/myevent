@@ -21,9 +21,11 @@ class Evento extends AppController {
         foreach($eventos as $evento) {
             $sub       = new \Models\SubEvento();
             $subEvents = $sub->findAll(['idEventos' => $evento->id]);
+            
             if ( $subEvents ) {
                 foreach($subEvents as $subEvent ) {
                     $subEvent->nVagasRestantes = $subEvent->nVagas - mInscricao::getNumInscritos($subEvent->id);
+                    $subEvent->numInscritos  = mInscricao::getNumInscritos($subEvent->id);
                 }
             }
 

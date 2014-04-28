@@ -14,6 +14,7 @@
         <span class="hidden-tablet"> Alterar senha </span>
     </a>
 </li>
+{% if get_meta('inscricoes_ativas') == 1 %}
 <li class="nav-header hidden-tablet">Inscrição</li>
 <li>
     <a class="ajax-link" href="/congressista/inscricao/index/userId/{{ user._id }}"><i class="icon-edit"></i>
@@ -25,6 +26,7 @@
         <span class="hidden-tablet"> Visualizar Eventos </span>
     </a>
 </li>
+{% endif %}
 {% if get_meta('submissoes_ativas') == 1 and user.submissao == 'S' %}
 <li class="nav-header hidden-tablet">Submissões</li>
 <li>

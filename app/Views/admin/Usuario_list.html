@@ -23,10 +23,15 @@
                         {{ flash_messages('Erro') }}
 
                         <a href="/admin/reports/users" class="btn btn-primary">Imprimir Lista de Presença</a>
+                        <a href="/admin/reports/email" class="btn btn-primary">Export emails</a>
+                        <a href="/admin/reports/email_inscritos" class="btn btn-primary">Export Inscritos</a>
+                        <a href="/admin/reports/email_nao_inscritos" class="btn btn-primary">Export Não Inscritos</a>
+                        
                         <br /> <br />
                         <table class="table table-striped table-bordered bootstrap-datatable datatable">
                           <thead>
                               <tr>
+                                  <th>#ID</th>
                                   <th>Nome</th>
                                   <th>E-mail</th>
                                   <th>Tipo</th>
@@ -39,6 +44,7 @@
                           <tbody>
                             {% for user in this.users %}
                                 <tr>
+                                    <td>{{ user.id }}</td>
                                     <td width="150">{{ user.nomeCompleto }}</td>
                                     <td class="center">{{ user.email }} </td>
                                     <td class="center">
@@ -73,10 +79,16 @@
                                             <i class="icon-edit icon-white"></i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger" href="/admin/user/del/id/{{ user.id }}">
+                                        <a class="btn btn-danger btn-setting" href="/admin/user/del/id/{{ user.id }}">
                                             <i class="icon-trash icon-white"></i>
                                             Del
                                         </a>
+                                        {% if user.tipo == 'PA' %}
+                                         <a class="btn btn-warning btn-setting" href="/admin/user/passwordreset/id/{{ user.id }}">
+                                            <i class="icon-edit icon-white"></i>
+                                            Senha
+                                        </a>
+                                        {% endif %}
                                         {% if user.payment_receipt %}
                                         <a target="_blank" class="btn btn-warning" href="/uploads/{{ user.payment_receipt }}" >
                                             Comprovante

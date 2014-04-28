@@ -48,7 +48,7 @@
                                         <i class="icon-edit icon-white"></i>
                                         Edit
                                     </a>
-                                    <a class="btn btn-danger" href="/admin/evento/del/id/{{ evento.id }}">
+                                    <a class="btn btn-danger btn-setting" href="/admin/evento/del/id/{{ evento.id }}">
                                         <i class="icon-trash icon-white"></i>
                                         Del
                                     </a>
@@ -63,6 +63,7 @@
                                               <th>Título</th>
                                               <th>Vagas</th>
                                               <th>Restantes</th>
+                                              <th>Inscritos</th>
                                               <th>Ações</th>
                                           </tr>
                                           {% for subevento in this.subeventos[evento.id] %}
@@ -83,6 +84,7 @@
                                                 {% endif %}
                                             </td>
                                             </td>
+                                            <td>{{ subevento.numInscritos }}</td>
                                             <td class="center">
                                                 <a class="btn btn-success" href="/congressista/inscricao/viewinscritos/idsubevento/{{ subevento.id }}">
                                                     <i class="icon-zoom-in icon-white"></i>
@@ -92,11 +94,11 @@
                                                     <i class="icon-edit icon-white"></i>
                                                     Edit
                                                 </a>
-                                                   <a class="btn btn-warning" href="/admin/reports/subevents/id/{{ subevento.id }}">
+                                                <a class="btn btn-warning" href="/admin/reports/subevents/id/{{ subevento.id }}">
                                                     <i class="icon-zoom-in icon-white"></i>
                                                     Lista
                                                 </a>
-                                                <a class="btn btn-danger" href="/admin/subevento/del/id/{{ subevento.id }}">
+                                                <a class="btn btn-danger btn-setting" href="/admin/subevento/del/id/{{ subevento.id }}">
                                                     <i class="icon-trash icon-white"></i>
                                                     Del
                                                 </a>

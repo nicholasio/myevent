@@ -106,7 +106,7 @@
                                   sha1(this.submissao) )
                                 }}
                               {% endif %}
-                                
+                            {% if get_meta('evento_gratuito') == 0 %}
                                 {{ form_input("Enviar Comprovante de Pagamento", 'payment-receipt-file', 'file')  }}
                               {% if this.payment_receipt %}
                                     <div class="control-group">
@@ -118,8 +118,8 @@
                                         </div>
                                     </div>
                                   
-                              {% endif %}
-
+                                {% endif %}
+                            {% endif %}
                               <div class="form-actions">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
                                 {% if this.id %}

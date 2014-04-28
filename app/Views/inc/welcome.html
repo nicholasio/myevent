@@ -7,9 +7,22 @@
         {{ flash_messages('') }}
         <p><strong>Status:</strong>
         {% if user.status == 'AP' %}
-            <span class="label label-warning">Aguardando Pagamento</span>
+            <span class="label label-warning"
+            >
+                {% if get_meta('evento_gratuito') == 1 %}
+                    Aguardando homologação
+                {% else %}
+                    Aguardando Pagamento
+                {%endif%}
+            </span>
         {% elseif user.status == 'PG' %}
-            <span class="label label-success">Pagamento Confirmado</span>
+            <span class="label label-success">
+               {% if get_meta('evento_gratuito') == 1 %}
+                    Inscrição homologada
+                {% else %}
+                    Pagamento confirmado.
+                {%endif%}
+            </span>
         {% endif %}
         <br /> <br />
         {% if get_meta('submissoes_ativas') == 1 %}
@@ -22,17 +35,23 @@
         {% endif %}
     </p>
     <div class="tooltip-demo">
-        {% if not this.isInscrito and user.status == 'PG' %}
-            <p>Você ainda não fez sua inscrição em nenhum minicurso ou palestra, utilize o menu ao lado para realizar sua inscrição em algum minicurso.</p>
-        {% elseif user.status == 'AP' %}
-
-                <p>É preciso realizar o pagamento antes de realizar a sua inscrição!</p>
+       
+        {% if user.status == 'AP' %}
+                
+                {% if get_meta('evento_gratuito') == 0  %}
+                    <p>É preciso realizar o pagamento antes de realizar a sua inscrição!</p>
+                {% endif %}
+                
                 {{ get_meta('descricao_pagamento')|raw }}
-                <div class="well">
-                Valor a ser pago: R${% if user.submissao == 'S' %} {{ get_meta('valor_inscricao_com_submissao') }} 
-                    {% else %} {{ get_meta('valor_inscricao_sem_submissao') }} {% endif %}
-                </div>
-                {% if not user.payment_receipt %}
+                
+                {% if get_meta('evento_gratuito') == 0 %}
+                    <div class="well">
+                    Valor a ser pago: R${% if user.submissao == 'S' %} {{ get_meta('valor_inscricao_com_submissao') }} 
+                        {% else %} {{ get_meta('valor_inscricao_sem_submissao') }} {% endif %}
+                    </div>
+                {% endif %}
+                
+                {% if not user.payment_receipt and get_meta('evento_gratuito') == 0 %}
             
                 <p>Envie o comprovante de pagamento: </p>
                     <form action="/user/sendreceipt" method="post" enctype="multipart/form-data">
@@ -40,11 +59,13 @@
                         <input type="hidden" name="id" value="{{ user._id }}" />
                         <input type="submit" value="Enviar" />
                     </form>
-                {% else %}
+                {% elseif get_meta('evento_gratuito') == 0 %}
                    <p>Você já enviou o seu comprovante de pagamento, para alterar, acesse o seu <a href="/user/edit/id/{{ user._id }}">perfil</a>.</p>
                 {% endif %}
-
-        {% elseif this.isInscrito %}
+        {% elseif user.status == 'PG' %}
+           {{ get_meta('info_homologada')|raw}}
+        {% endif %}
+        {% if this.isInscrito %}
             <p>Sua inscrição foi realizada com sucesso! Tenha um ótimo evento. </p>
             <h4> Você está inscrito nos seguintes eventos:</h4>
             <p>

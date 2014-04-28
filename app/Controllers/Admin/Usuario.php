@@ -51,6 +51,14 @@ class Usuario extends Base\Usuario {
         $this->flashMessages->add('s', 'Pagamento de: '. $this->getModel()->nomeCompleto . ', email: ' . $this->getModel()->email . ' confirmado com sucesso');
         $this->go('admin', 'user');
     }
+    
+    public function passwordreset() {
+        $this->getModel()->setRequired(false);
+        $this->getModel()->setSenha($this->getModel()->cpf);
+        $this->getModel()->save();
+        $this->flashMessages->add('s', 'Senha de ' . $this->getModel()->nomeCompleto . ' alterada para ' . $this->getModel()->cpf);
+        $this->go('admin', 'user');
+    }
 
     public function usersreport() {
 

@@ -74,8 +74,8 @@ class Auth extends BaseController\Controller {
     }
 
     public function newaccount() {
-        /*$this->getHelper('flashMessages')->add('e', "Inscrições encerradas!");
-        $this->go(DEFAULT_MODULE, 'auth');*/
+        $this->getHelper('flashMessages')->add('e', "Inscrições encerradas!");
+        $this->go(DEFAULT_MODULE, 'auth');
         if ( $this->isPostRequest() ) {
             $this->preventDefault();
             $user   = new \Controllers\Admin\Usuario();

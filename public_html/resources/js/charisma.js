@@ -264,6 +264,7 @@ function docReady(){
 	$('.datatable').dataTable({
 			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
 			"sPaginationType": "bootstrap",
+			"bStateSave": true,
 			"oLanguage": {
 				"sLengthMenu"   : "_MENU_ registros por página",
 				"sEmptyTable"   : "Nenhum registro disponível",
@@ -293,8 +294,13 @@ function docReady(){
 		$target.slideToggle();
 	});
 	$('.btn-setting').click(function(e){
-		e.preventDefault();
+		//e.preventDefault();
+		$href = $(this).attr('href');
+		
+		$('#myModal .modal-footer .btn-primary').attr('href', $href);
 		$('#myModal').modal('show');
+		
+		return false;
 	});
 
 
