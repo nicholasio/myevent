@@ -120,6 +120,15 @@
                                   
                                 {% endif %}
                             {% endif %}
+                            <!-- Usuário precisa ser administrador para editar suas observações-->
+                            {% if user.tipo == 'AD' %}
+                                <div class="control-group">
+                                    <label class="control-label" for="description">Observações: </label>
+                                    <div class="controls">
+                                      <textarea class="cleditor" name='description' style="width: 400px;height:150px;" id='description'>{{ this.description }}</textarea>
+                                    </div>
+                                </div>
+                            {% endif %}
                               <div class="form-actions">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
                                 {% if this.id %}
