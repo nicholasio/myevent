@@ -31,6 +31,9 @@ class Index extends AppController {
         $estatisticas['Inscrições não confirmadas'] = $bd->query('
             SELECT count(*) as total FROM Usuarios WHERE tipo = "PA" AND status = "AP"
             ')[0]->total;
+        $estatisticas['Credenciados'] = $bd->query('
+            SELECT count(*) as total FROM Usuarios WHERE tipo = "PA" AND presence = 1
+            ')[0]->total;
         $this->view->estatisticas = $estatisticas;
 
     }

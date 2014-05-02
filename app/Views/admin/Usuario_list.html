@@ -23,6 +23,7 @@
                         {{ flash_messages('Erro') }}
 
                         <a href="/admin/reports/users" class="btn btn-primary">Imprimir Lista de Presença</a>
+                        <a href="/admin/reports/certificadosusers" class="btn btn-primary">Imprimir Lista de Certificados</a>
                         <a href="/admin/reports/email" class="btn btn-primary">Export emails</a>
                         <a href="/admin/reports/email_inscritos" class="btn btn-primary">Export Inscritos</a>
                         <a href="/admin/reports/email_nao_inscritos" class="btn btn-primary">Export Não Inscritos</a>
@@ -33,7 +34,7 @@
                               <tr>
                                   <th>#ID</th>
                                   <th>Nome</th>
-                                  <th>E-mail</th>
+                                  <th>CPF</th>
                                   <th>Tipo</th>
                                   <th>Status</th>
                                   <th>Data de Registro</th>
@@ -43,10 +44,14 @@
                           </thead>
                           <tbody>
                             {% for user in this.users %}
-                                <tr>
-                                    <td>{{ user.id }}</td>
+                                {% set style = '' %}
+                                {% if user.presence == 1 %}
+                                    {% set style = 'background-color: green;color:#FFF;' %}
+                                {% endif %}
+                                <tr >
+                                    <td style="{{ style }}"> {{ user.id }}</td>
                                     <td width="150">{{ user.nomeCompleto }}</td>
-                                    <td class="center">{{ user.email }} </td>
+                                    <td class="center">{{ user.cpf }} </td>
                                     <td class="center">
                                         {% if user.tipo == 'AD' %}
                                             <span class="label label-success">Administrador</span>
@@ -88,7 +93,7 @@
                                             <i class="icon-edit icon-white"></i>
                                             Senha
                                         </a>
-                                         <a class="btn btn-info " href="/admin/user/presenca/id/{{ user.id }}">
+                                         <a class="btn btn-info " href="/admin/user/presence/id/{{ user.id }}">
                                             <i class="icon-edit icon-white"></i>
                                             Presença
                                         </a>

@@ -144,7 +144,7 @@ class UploadHelper {
 		}
 		
 		//create finfo object
-		$this->finfo = new \finfo();
+		$this->finfo = new finfo();
 		
 	}
 	
@@ -550,8 +550,7 @@ class UploadHelper {
 	 * @return bool
 	 */
 	protected function create_destination() {
-		
-		return mkdir(ROOT . $this->destination, self::DEFAULT_DIR_PERMISSIONS, true);
+		return @mkdir(ROOT . $this->destination, self::DEFAULT_DIR_PERMISSIONS, true);
 		
 	}
 	

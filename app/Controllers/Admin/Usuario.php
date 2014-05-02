@@ -60,8 +60,12 @@ class Usuario extends Base\Usuario {
         $this->go('admin', 'user');
     }
 
-    public function usersreport() {
-
+    public function presence() {
+        $this->getModel()->setRequired(false);
+        $this->getModel()->presence = 1;
+        $this->getModel()->save();
+        $this->flashMessages->add('s', 'Presença ' . $this->getModel()->nomeCompleto . ' confirmada.');
+        $this->go('admin', 'user');
     }
 
 

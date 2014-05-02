@@ -68,9 +68,8 @@ class Inscricao extends AppController{
 
         foreach( $this->idEvents as $id ) {
             $subEventId = $this->getPost('event-'.$id); //Pega um id de subevento
-            if ( $subEventId == -1 ) { //Minicurso lotado
-                //@TODO Verificar real quantidade de vagas restantes
-                $this->flashMessages->add('e', 'Evento escolhido está Lotado');
+            if ( $subEventId == -1 || ! $this->haveSeats($subEventId) ) { 
+                $this->flashMessages->add('e', 'Atividade escolhida está lotada');
                 return false;
             }
         }
@@ -78,20 +77,67 @@ class Inscricao extends AppController{
         return true;
     }
 
+    /*
+        
+    */
     public function saveInscricao() {
 
-        foreach( $this->idEvents as $id ) {
-            $inscricao  = new \Models\Inscricao();
+        foreach( $this->idEvents as $id ) { 
             $subEventId = $this->getPost('event-'.$id);
-            $inscricao->idSubEventos = trim($subEventId);
-            $inscricao->idUsuarios   = trim($this->getPost('userId'));
-            $inscricao->save();
+            $userId     = $this->getPost('userId');
+
+            $this->register( $userId, $subEventId );
         }
 
         return true;
 
     }
 
+    /*
+        Função que retorna true se um subevento tiver vaga
+    */
+    public function haveSeats( $subEventId ) {
+        $subEvent   = new \Models\SubEvento( $subEventId );
+        $nInscritos = mInscricao::getNumInscritos( $subEventId );
+
+        if ( $subEvent->nVagas - $nInscritos > 0 ) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    /* 
+        Registra um único usuário em um subevento
+    */
+    public function register( $userId, $subEventId ) {  
+        if ( ! $this->haveSeats( $subEventId ) ) {
+            return false;
+        }
+
+        $inscricao  = new \Models\Inscricao();
+        $inscricao->idSubEventos = trim($subEventId);
+        $inscricao->idUsuarios   = trim($userId);
+
+        return $inscricao->save();
+    }
+
+    /*
+       Action para registrar um único usuário em um subevento
+    */
+    public function registeruser() {
+        $subEventId = $this->getParam('subEventId');
+        $userId = $this->getPost('userId');
+
+        if ( $this->register($userId, $subEventId) ) {
+            $this->flashMessages->add('s', 'Inscrição realizada com sucesso');
+        } else {
+            $this->flashMessages->add('e', 'Atividade escolhida está lotada!');
+        }
+
+        $this->go('congressista','inscricao', 'viewinscritos',  ['idsubevento' => $subEventId]);
+
+    }
     public function viewevents() {
         $this->loadData();
     }
@@ -101,6 +147,8 @@ class Inscricao extends AppController{
 
         $id = $this->getParam('idsubevento');
         $this->view->idsubevento = $id;
+
+        $this->view->allUsers = \Models\Usuario::fetchAll(null, 'nomeCompleto ASC');
 
         $bd = \Moxo\Banco::getInstance();
         $inscritos = $bd->query("SELECT *, SubEventos.nome as SubEventoNome, Eventos.nome as EventoNome,

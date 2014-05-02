@@ -21,6 +21,7 @@ class Usuario extends BaseModel {
 	public $created;
 	public $payment_receipt;
 	public $description;
+	public $presence;
 
 	public function __construct($id = null) {
 		parent::__construct($id);
