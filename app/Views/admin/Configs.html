@@ -110,6 +110,20 @@
 
                                     </div>
                                 </div>
+                                <div class="control-group">
+                                    <label class="control-label" >Habilitar Cadastro: </label>
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" id="radio_cadastro1" value="1" name="meta_data[cadastro_ativo]"
+                                            {% if get_meta('cadastro_ativo') == 1 %} checked {% endif %} /> Sim
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="radio_cadastro2" value="0" name="meta_data[cadastro_ativo]"
+                                            {% if get_meta('cadastro_ativo') == 0 %} checked {% endif %}/> Não
+                                        </label>
+
+                                    </div>
+                                </div>
                                 <!--{{ form_input("Deadline Submissão: ", 'meta_data[deadline_submissao]', 'text', get_meta('deadline_submissao'), { 'class' : 'datepicker' } )  }}-->
 
                                 {{ form_input("Valor Inscrição com submissão", 'meta_data[valor_inscricao_com_submissao]', 'text', get_meta('valor_inscricao_com_submissao'), { 'class' : 'input-mini' } )  }}
